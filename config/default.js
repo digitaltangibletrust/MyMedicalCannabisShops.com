@@ -1,3 +1,4 @@
+var path = require('path');
 module.exports = {
   'port': 3000,
   'app': {
@@ -6,13 +7,13 @@ module.exports = {
 
     },
     'favicon': {
-      'path': __dirname + '/public/favicon.ico'
+      'path': path.resolve(__dirname, '../public/favicon.ico')
     },
     'morgan': {
       'alias': 'combined'
     },
     'serveStatic': {
-      'path': __dirname + '/public'
+      'path': path.resolve(__dirname, '../public')
     }
   },
   'db': {

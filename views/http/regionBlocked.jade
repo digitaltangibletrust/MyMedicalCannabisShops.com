@@ -1,0 +1,11 @@
+extends /layouts/default
+
+block head
+  title Region Blocked
+
+block body
+  h1 Region Blocked
+  p.lead
+    | We're sorry, but access to this service is not permitted from your region (which appears to be #{region.name}).
+  p 
+    | Please contact <a href="mailto:support@sericatrading.com">support@sericatrading.com</a> if you have any further questions, or believe you are seeing this warning in error.

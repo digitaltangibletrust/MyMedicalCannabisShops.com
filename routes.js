@@ -1,6 +1,6 @@
 'use strict';
 var modules = {};
-['http', 'main'].forEach(function (mod) {
+['http', 'main', 'store'].forEach(function (mod) {
   modules[mod] = require('./views/' + mod + '/index.js');
 });
 

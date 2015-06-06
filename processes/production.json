@@ -1,0 +1,8 @@
+{
+  "apps": [{
+    "name": "mmcs",
+    "script": "app.js",
+    "cwd": "/var/www/app/current",
+    "log_date_format": "YYYY-MM-DD HH:mm Z"
+  }]
+}

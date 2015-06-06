@@ -208,8 +208,7 @@ module.exports = function (grunt) {
       'core': {
         'files': {
           'public/less/core.min.css': [
-            'public/less/core.less'
-          ]
+            'public/less/core.less']
         }
       },
     },

@@ -157,13 +157,6 @@ module.exports = function (grunt) {
             'public/js/main.js'
           ]
         }
-      },
-      'admin': {
-        'files': {
-          'public/js/admin.min.js': [
-            'public/js/admin.js'
-          ]
-        }
       }
     },
     'jsbeautifier': {
@@ -181,7 +174,6 @@ module.exports = function (grunt) {
         'src': [
           'models/**/*.js',
           'views/**/*.js',
-          'public/js/admin.js',
           './*.js'
         ],
         'options': {

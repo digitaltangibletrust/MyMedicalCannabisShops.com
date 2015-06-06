@@ -6,7 +6,7 @@ set :scm, "git"
 set :repository, "git@github.com:digitaltangibletrust/MyMedicalCannabisShops.com.git"
 set :branch, "master"
 set :deploy_to, "/var/www/app"
-set :deploy_via, :remote_cache
+set :deploy_via, :copy
 set :copy_strategy, :checkout
 set :keep_releases, 5
 set :use_sudo, false
@@ -15,8 +15,8 @@ set :normalize_asset_timestamps, false
 set :document_root, "/var/www/app"
 set :ssh_options, {:forward_agent => true}
 set :user, "bitcoin"
-set :stages, ["master", "production"]
-set :default_stage, "master"
+set :stages, ["production"]
+set :default_stage, "production"
 
 namespace :deploy do
     task :start, :roles => :app do

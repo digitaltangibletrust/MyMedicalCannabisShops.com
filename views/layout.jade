@@ -8,29 +8,30 @@ html
     block head
       title #{title}
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='shortcut icon' href='/media/favicon.png?v=1.3')
+    link(rel='shortcut icon' href='/media/favicon.png?v=1')
     link(rel='stylesheet', href='/less/core.min.css?#{cacheBreaker}')
-    
+    style.
+      div {
+        border: 1px solid black;
+      }
+      .subscribe {
+        border: 1px solid orange;
+      }
+      .offer {
+        width: 150px;
+        height: 250px;
+      }
     block neck
   
   body
-    div.navbar-fixed-top
+    div.navbar
       include head
-    div.page
-      if (noContainer)
-        block content
-      else
-        div.container.container-smooth-sm
-          block content
-    div.footer-push
+    div.page.container
+      block content
     div.footer
-      block aboveFooter
       include footer
-    //jQuery
     script(src='/vendor/jquery/jquery.min.js?#{cacheBreaker}')
-    //main thirdParty bundle
     script(src='/js/thirdPartyAndBrowserify.min.js?#{cacheBreaker}')
-    //main app
     script(src='/js/mmcs.min.js?#{cacheBreaker}')
 
     block feet

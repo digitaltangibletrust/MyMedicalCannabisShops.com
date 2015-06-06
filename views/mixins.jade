@@ -1,0 +1,14 @@
+
+
+	
+
+mixin showOffer(offer)
+	.offer
+		.headline
+			p #{formatCurrency(offer.value, 'USD')}
+			p.lead #{offer.name}
+			p.merchant here will go offer.merchant
+			.description #{offer.description}
+			p #{formatCurrency(offer.value, 'USD')}
+			button.btn.btn-warning CLAIM OFFER
+

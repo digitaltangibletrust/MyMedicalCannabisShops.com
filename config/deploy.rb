@@ -32,7 +32,7 @@ namespace :deploy do
     end
 
     task :npm_install, :roles => :app do
-        run "cd #{release_path} && node -v && NODE_ENV='' npm cache clean && NODE_ENV='' npm install && node_modules/bower/bin/bower install"
+        run "cd #{release_path} && nodejs -v && NODE_ENV='' npm cache clean && NODE_ENV='' npm install && node_modules/bower/bin/bower install"
     end
     task :grunt_build, :roles => :app do
         run "cd #{release_path} && grunt build"

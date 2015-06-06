@@ -18,7 +18,6 @@ var methodOverride = require('method-override')
 var bodyParser = require('body-parser');
 var Cookies = require('cookies');
 
-
 var httpHelpers = require('./views/http/index.js');
 //create express app
 var app = express();
@@ -33,6 +32,7 @@ sequelize.authenticate().then(function (err) {
 });
 
 app.db = require('./models/index.js')(sequelize);
+app.db.Sequelize = Sequelize;
 
 //setup basedir for jade paths
 app.locals.basedir = path.join(__dirname, '/');

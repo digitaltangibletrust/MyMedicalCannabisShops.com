@@ -10,5 +10,5 @@ mixin showOffer(offer)
 			p.merchant here will go offer.merchant
 			.description #{offer.description}
 			p #{formatCurrency(offer.value, 'USD')}
-			button.btn.btn-warning CLAIM OFFER
+			button.btn.btn-warning(onclick="window.location=#{offer.url}") CLAIM OFFER
 

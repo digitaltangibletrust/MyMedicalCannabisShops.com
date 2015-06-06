@@ -2,17 +2,21 @@ extends /views/layout
 
 block content
   .row
-    .col-md-9
-      .subscribe
-        form(method="post", action="/subscribe")
-          p.lead.pull-center Get Top Offers In Your Area Delivered to Your Inbox
-          input(type="text" name="email", placeholder="Enter your email address")
-          input.btn.btn-warning(value="Signup")
-          p.gray Plus our daily, hand-picked offers. We won't share your info. Opt out any time 
+    .subscribe.center-block.text-center
+      form.form-inline(method="post", action="/subscribe")
+        p.lead.pull-center Get Top Offers In Your Area Delivered to Your Inbox
+        .form-group.center-block.col-md-12
+          input.form-control(type="text" size="50" name="email", placeholder="Enter your email address")
+          button.btn.btn-warning(type="submit") Subscribe
+        p.gray Plus our daily, hand-picked offers. We won't share your info. Opt out any time 
           a(href="/privacy") Privacy
+  .row &nbsp;
   .row
     .col-md-3
-      p here go merchants
+      p.lead Merchants
+      -each store in stores
+        a(href="/store/#{store.name}")
+          img.merchant-logo(src="#{store.logo}")
     .col-md-9
       -each offer in offers 
        +showOffer(offer)

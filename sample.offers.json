@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Offer name",
+    "url": "http://offerurl.com",
+    "active": true,
+    "ending_at": "2015-07-07 11:22:16",
+    "value": 9.99,
+    "description": "markdown supported description",
+    "store": "Alldae"
+ }, {
+    "name": "Offer name 2",
+    "url": "http://offerurl.com",
+    "active": true,
+    "ending_at": "2015-07-07 11:22:16",
+    "value": 9.99,
+    "description": "markdown supported description",
+    "store": "Alldae"
+ }, {
+    "name": "Offer name 3",
+    "url": "http://offerurl.com",
+    "active": true,
+    "ending_at": "2015-07-07 11:22:16",
+    "value": 9.99,
+    "description": "markdown supported description",
+    "store": "Alldae"
+ }
+
+]

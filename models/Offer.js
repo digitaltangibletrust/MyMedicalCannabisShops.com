@@ -18,6 +18,14 @@ module.exports = function (sequelize, DataTypes) {
     'ending_at': {
       'type': DataTypes.DATE,
       'allowNull': false
+    },
+    'active': {
+      'type': DataTypes.BOOLEAN,
+      'defaultValue': false
+    },
+    'url': {
+      'type': DataTypes.STRING,
+      'required': true
     }
   }, {
     'classMethods': {

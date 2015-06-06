@@ -18,6 +18,7 @@
   "homepage": "https://github.com/digitaltangibletrust/MyMedicalCannabisShops.com",
   "dependencies": {
     "body-parser": "^1.12.4",
+    "bower": "^1.4.1",
     "compression": "^1.4.4",
     "config": "^1.14.0",
     "cookies": "^0.5.0",

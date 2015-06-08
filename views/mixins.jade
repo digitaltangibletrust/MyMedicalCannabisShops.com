@@ -1,14 +1,26 @@
+mixin subscribePrompt
+  .section-padding.border-bottom
+    .container
+      .row: .col-sm-8.col-sm-offset-2
+        .panel.panel-warning: .panel-body.text-center
+          p.lead Get Top Offers In Your Area Delivered to Your Inbox
 
+          .row: .col-sm-6.col-sm-offset-3: form.form(method="post", action="/subscribe")
+            .form-group: .input-group
+              input.form-control(type="text" size="50" name="email", placeholder="Enter your email address")
+              span.input-group-btn
+                button.btn.btn-warning(type="submit") Subscribe
 
-	
+          p.text-muted Plus our daily, hand-picked offers. We won't share your info. Opt out any time. 
+            a(href="/privacy") Privacy Policy
 
 mixin showOffer(offer)
-	.offer
-		.headline
-			p #{formatCurrency(offer.value, 'USD')}
-			p.lead #{offer.name}
-			p.merchant here will go offer.merchant
-			.description #{offer.description}
-			p #{formatCurrency(offer.value, 'USD')}
-			button.btn.btn-warning(onclick="window.location=#{offer.url}") CLAIM OFFER
-
+  .col-sm-4
+    .panel.panel-default
+      .panel-body
+        p #{format.currency(offer.value)}
+        p.lead #{offer.name}
+        p.merchant here will go offer.merchant
+        .description #{offer.description}
+        p #{format.currency(offer.value)}
+        a.btn.btn-warning.text-uppercase(onclick="window.location=#{offer.url}") Claim Offer

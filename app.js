@@ -102,41 +102,19 @@ app.locals.cacheBreaker = 'br34k-52';
 
 //templating helpers
 app.locals.marked = marked;
-app.locals.currencies = ['USD', 'EUR'];
-app.locals.formatCurrency = function (val, currency, precision) {
-  if (!precision) {
-    if (currency === 'BTC') {
-      precision = 4;
-    } else {
-      precision = 2;
-    }
-  }
-  var zeroes = _.times(precision, function () {
-    return '0';
-  }).join('');
+app.locals.format = {
+  'currency': function (val, currency, precision) {
+    precision = precision || 2;
 
-  if (currency === 'USD' || _.isUndefined(currency)) {
-    return '$' + numeral(val || 0).format('0,0.' + zeroes) + '\u00A0USD';
-  } else if (currency === 'EUR') {
-    return '€' + numeral(val || 0).format('0,0.' + zeroes) + '\u00A0EUR';
-  } else {
-    return 'Ƀ' + numeral(val || 0).format('Ƀ0,0.' + zeroes) + '\u00A0BTC';
+    var zeroes = _.times(precision, function () {
+      return '0';
+    }).join('');
+
+    return '$' + numeral(val || 0).format('0,0.' + zeroes);
+  },
+  'percentage': function (val) {
+    return numeral(val).format('0.00%');
   }
-};
-app.locals.formatPercentage = function (val) {
-  return numeral(val).format('0.00%');
-};
-app.locals.fromNow = function (date) {
-  return moment(date).fromNow();
-};
-app.locals.longDate = function (date) {
-  return moment(date).format('dddd, MMMM Do YYYY HH:mm:ss');
-};
-app.locals.mediumDate = function (date) {
-  return moment(date).format('MMM D, YYYY h:mm A');
-};
-app.locals.shortDate = function (date) {
-  return moment(date).format('MMM D, YYYY');
 };
 
 //config express in dev environment

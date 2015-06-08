@@ -10,36 +10,17 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='shortcut icon' href='/media/favicon.png?v=1')
     link(rel='stylesheet', href='/less/core.min.css?#{cacheBreaker}')
-    style.
-      .subscribe {
-        border: 1px solid orange;
-        height: 90%;
-        width: 60%;
-        float: none;
-        margin: 0 auto;
-      }
-      .offer {
-        width: 150px;
-        height: 250px;
-        float: left;
-        margin: 30px;
-        border: 1px solid black;
-        padding: 14px;
-      }
-      .merchant-logo {
-        width: 70px;
-        height: 70px;
-        float: left;
-      }
+
     block neck
   
   body
-    div.navbar
-      include head
-    div.page.container
+    .navbar.navbar-default
+      include _nav
+    .page
       block content
-    div.footer
-      include footer
+    .footer
+      include _footer
+
     script(src='/vendor/jquery/jquery.min.js?#{cacheBreaker}')
     script(src='/js/thirdPartyAndBrowserify.min.js?#{cacheBreaker}')
     script(src='/js/mmcs.min.js?#{cacheBreaker}')

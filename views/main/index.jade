@@ -1,22 +1,20 @@
 extends /views/layout
 
 block content
-  .row
-    .subscribe.center-block.text-center
-      form.form-inline(method="post", action="/subscribe")
-        p.lead.pull-center Get Top Offers In Your Area Delivered to Your Inbox
-        .form-group.center-block.col-md-12
-          input.form-control(type="text" size="50" name="email", placeholder="Enter your email address")
-          button.btn.btn-warning(type="submit") Subscribe
-        p.gray Plus our daily, hand-picked offers. We won't share your info. Opt out any time 
-          a(href="/privacy") Privacy
-  .row &nbsp;
-  .row
-    .col-md-3
-      p.lead Merchants
-      -each store in stores
-        a(href="/store/#{store.name}")
-          img.merchant-logo(src="#{store.logo}")
-    .col-md-9
-      -each offer in offers 
-       +showOffer(offer)
+  +subscribePrompt
+
+  .section-padding
+    .container
+      .row
+        .col-md-3
+          p.lead Merchants
+          .row
+            each store in stores
+              .col-sm-6
+                a.thumbnail(href="/store/#{store.name}")
+                  img.img-responsive(src="/media/stores/#{store.logo}")
+
+        .col-md-9
+          .row
+            each offer in offers 
+             +showOffer(offer)

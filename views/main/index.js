@@ -8,7 +8,8 @@ module.exports.show = function (req, res, next) {
         'ending_at': {
           '$gte': new Date()
         }
-      }
+      },
+      'include': [req.app.db.Store]
     },
     'stores': {}
   };

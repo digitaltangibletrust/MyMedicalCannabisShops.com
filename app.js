@@ -103,8 +103,8 @@ app.locals.cacheBreaker = 'br34k-52';
 //templating helpers
 app.locals.marked = marked;
 app.locals.format = {
-  'currency': function (val, currency, precision) {
-    precision = precision || 2;
+  'currency': function (val, precision) {
+    precision = precision !== undefined ? precision : 2;
 
     var zeroes = _.times(precision, function () {
       return '0';

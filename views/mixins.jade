@@ -17,10 +17,10 @@ mixin subscribePrompt
 mixin showOffer(offer)
   .col-sm-4
     .panel.panel-default
-      .panel-body
-        p #{format.currency(offer.value)}
+      .panel-body.text-center
+        h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Cash Back
         p.lead #{offer.name}
-        p.merchant here will go offer.merchant
-        .description #{offer.description}
+        h5.merchant #{offer.Store.name}
+        p.small.description #{offer.description}
         p #{format.currency(offer.value)}
-        a.btn.btn-warning.text-uppercase(onclick="window.location=#{offer.url}") Claim Offer
+        a.btn.btn-warning.btn-block.text-uppercase(href="#{offer.url}") Claim Offer

@@ -8,15 +8,16 @@ var path = require('path');
 var moment = require('moment');
 var marked = require('marked');
 var numeral = require('numeral');
-var session = require('express-session');
+// var session = require('express-session');
 var morgan = require('morgan');
 var requestValidator = require('express-validator');
 var compression = require('compression');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var serveStatic = require('serve-static');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var Cookies = require('cookies');
+var errorHandler = require('errorhandler');
 
 var httpHelpers = require('./views/http/index.js');
 //create express app
@@ -141,7 +142,7 @@ app.locals.shortDate = function (date) {
 
 //config express in dev environment
 if (process.env.NODE_ENV === 'development') {
-  app.use(express.errorHandler);
+  app.use(errorHandler);
 }
 
 //route requests

@@ -12,10 +12,11 @@ module.exports.show = function (req, res, next) {
     },
     'stores': {}
   };
+
   req.app.db.Sequelize.Promise.all([
-     req.app.db.Offer.findAll(criteria.offers),
-     req.app.db.Store.findAll(criteria.stores)
-    ]).then(function (results) {
+    req.app.db.Offer.findAll(criteria.offers),
+    req.app.db.Store.findAll(criteria.stores)
+  ]).then(function (results) {
     var offers = results[0];
     var stores = results[1];
     var offersSum = offers.reduce(function (acc, offer) {

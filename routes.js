@@ -3,12 +3,12 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
 var mods = [
- 'main',
- 'store',
- 'admin',
- 'admin/api',
- 'http',
- 'subscribe'
+  'main',
+  'store',
+  'admin',
+  'admin/api',
+  'http',
+  'subscribe'
 ];
 
 var modLoader = require('./views/index.js');

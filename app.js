@@ -92,7 +92,6 @@ app.use(function (err, req, res, next) {
   }
 });
 
-
 app.use(httpHelpers.http500);
 
 //global locals
@@ -142,22 +141,11 @@ app.locals.shortDate = function (date) {
 
 //config express in dev environment
 if (process.env.NODE_ENV === 'development') {
-  app.use(errorHandler);
+  app.use(errorHandler());
 }
 
 //route requests
 require('./routes').configure(app);
-
-//setup melotic
-// var Melotic = require('melotic');
-// app.melotic = new Melotic({
-//   'accessKey': config.melotic.accessKey,
-//   'secret': config.melotic.secret
-// });
-
-// if (config.melotic.proxy.enabled) {
-//   require('melotic/proxy')(config.melotic.proxy.port);
-// }
 
 //setup hipchat
 //require('lib/hipchat')(config, app);

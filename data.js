@@ -18,7 +18,8 @@ function init(_app) {
 
   // load initial data from the cache
   attemptReadFromCache()
-    .then(updateLocals);
+    .then(updateLocals)
+    .catch(fetchAndWrite);
 
   // get fresh data and update app.locals every updateFrequency
   loop();
@@ -53,9 +54,7 @@ function fetchAndWrite() {
       parsed = data;
       return fs.writeFileAsync(dataPath, JSON.stringify(data), 'utf8');
     })
-    .then(function() {
-      return parsed;
-    });
+    .return(parsed);
 }
 
 function parse(data) {

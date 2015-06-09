@@ -2,11 +2,8 @@
 var config = require('config');
 var express = require('express');
 var helmet = require('helmet');
-var Sequelize = require('sequelize');
 var _ = require('lodash');
 var path = require('path');
-var moment = require('moment');
-var marked = require('marked');
 var numeral = require('numeral');
 // var session = require('express-session');
 var morgan = require('morgan');
@@ -18,22 +15,10 @@ var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var Cookies = require('cookies');
 var errorHandler = require('errorhandler');
-
 var httpHelpers = require('./views/http/index.js');
+
 //create express app
 var app = express();
-
-//initialize sequelize models
-var sequelize = new Sequelize(config.db.uri, config.db.options);
-sequelize.authenticate().then(function (err) {
-  console.log('connected');
-}).catch(function (err) {
-  console.dir(err);
-  process.exit(1);
-});
-
-app.db = require('./models/index.js')(sequelize);
-app.db.Sequelize = Sequelize;
 
 //setup basedir for jade paths
 app.locals.basedir = path.join(__dirname, '/');
@@ -101,7 +86,6 @@ app.locals.copyrightName = app.get('company-name');
 app.locals.cacheBreaker = 'br34k-52';
 
 //templating helpers
-app.locals.marked = marked;
 app.locals.format = {
   'currency': function (val, precision) {
     precision = precision !== undefined ? precision : 2;
@@ -116,6 +100,9 @@ app.locals.format = {
     return numeral(val).format('0.00%');
   }
 };
+
+// DATA for use in templates
+require('./data.js')(app);
 
 //config express in dev environment
 if (process.env.NODE_ENV === 'development') {

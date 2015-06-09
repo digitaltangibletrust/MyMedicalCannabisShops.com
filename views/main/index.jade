@@ -5,9 +5,10 @@ block content
 
   .section-padding
     .container
-      .row
+      pre= JSON.stringify(offerData)
+      //- .row
         .col-md-3
-          p.lead Merchants
+          h3.no-margin-top Stores
           .row
             each store in stores
               .col-sm-6

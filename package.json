@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/digitaltangibletrust/MyMedicalCannabisShops.com",
   "dependencies": {
+    "bluebird": "^2.9.27",
     "body-parser": "^1.12.4",
     "bower": "^1.4.1",
     "compression": "^1.4.4",
@@ -38,6 +39,7 @@
     "numeral": "^1.5.3",
     "pg": "^4.3.0",
     "pg-hstore": "^2.3.2",
+    "request": "^2.57.0",
     "sequelize": "^3.1.1",
     "serve-favicon": "^2.2.1",
     "serve-static": "^1.9.3",

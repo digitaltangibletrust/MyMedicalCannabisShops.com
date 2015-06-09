@@ -19,8 +19,11 @@ mixin showOffer(offer)
     .panel.panel-default
       .panel-body.text-center
         h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Cash Back
-        p.lead #{offer.name}
-        h5.merchant #{offer.Store.name}
-        p.small.description #{offer.description}
+        h4 #{offer.name}
+        h5.merchant
+          a(href="/store/#{offer.Store.name}")
+            img(src="/media/stores/#{offer.Store.logo}" style="height:16px;")
+            | &nbsp; #{offer.Store.name}
+        p #{offer.description}
         p #{format.currency(offer.value)}
         a.btn.btn-warning.btn-block.text-uppercase(href="#{offer.url}") Claim Offer

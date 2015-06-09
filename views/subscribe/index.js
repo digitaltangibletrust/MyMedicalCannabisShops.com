@@ -1,16 +1,17 @@
 'use strict';
 
-module.exports.createSubscription = function (req, res, next) {
+module.exports.createSubscription = [
+  validate,
+  subscribe
+];
+
+function validate(req, res, next) {
   req.checkBody('email').isEmail();
-  var errs = req.validationErrors();
-  if (errs && errs.length > 0) {
-    return res.redirect('/');
-  }
-  req.app.db.Subscription.findOrCreate({
-    'where': {
-      'email': req.body.email
-    }
-  }).finally(function () {
-    return res.redirect('/');
-  });
-};
+  next(req.validationErrors());
+  // TODO: handle these errors better
+}
+
+function subscribe(req, res, next){
+  //TODO: pass these to the main app somewhere
+  res.redirect('/');
+}

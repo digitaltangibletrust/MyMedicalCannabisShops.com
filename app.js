@@ -103,6 +103,7 @@ app.locals.format = {
 
 // DATA for use in templates
 require('./data.js')(app);
+app.locals.config = config;
 
 //config express in dev environment
 if (process.env.NODE_ENV === 'development') {

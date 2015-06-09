@@ -1,11 +1,13 @@
 'use strict';
 
-var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
+var config = require('config');
+var _ = require('lodash');
+var bluebird = require('bluebird');
+var fs = bluebird.promisifyAll(require('fs'));
 var path = require('path');
-var request = Promise.promisifyAll(require('request'));
+var request = bluebird.promisifyAll(require('request'));
 
-var apiEndpoint = 'https://www.lakebtc.com/api_v1/ticker';
+var apiEndpoint = config.dataApi.url + '/apiroot/merchantsDeep';
 var dataPath = path.join(__dirname, 'data.json');
 var updateFrequency = 60 * 1000;
 
@@ -29,7 +31,7 @@ function loop() {
   fetchAndWrite()
     .then(updateLocals)
     .then(function() {
-      return Promise.delay(updateFrequency);
+      return bluebird.delay(updateFrequency);
     })
     .then(loop)
     .catch(function(err) {
@@ -43,22 +45,18 @@ function attemptReadFromCache(stat) {
 }
 
 function fetchAndWrite() {
-  var parsed;
   return request.getAsync(apiEndpoint)
     .spread(function(res, body) {
       return body;
     })
     .then(parse) // make sure it's parseable before writing to the cache
-    .then(function(data) {
-      // write new data to the cache
-      parsed = data;
-      return fs.writeFileAsync(dataPath, JSON.stringify(data), 'utf8');
-    })
-    .return(parsed);
+    .then(function(parsedBody) {
+      return fs.writeFileAsync(dataPath, JSON.stringify(parsedBody.data), 'utf8').return(parsedBody.data);
+    });
 }
 
 function parse(data) {
-  return new Promise(function(resolve, reject) {
+  return new bluebird(function(resolve, reject) {
     try {
       var parsed = JSON.parse(data);
       resolve(parsed);
@@ -69,5 +67,20 @@ function parse(data) {
 }
 
 function updateLocals(data) {
-  app.locals.offerData = data;
+  // TODO: this should probably just come from an offersDeep endpoint in the app
+  var offers = _.chain(data.merchants)
+    .reduce(function(combined, merchant){
+      return combined.concat(merchant.Offers.map(function(_offer){
+        _offer.Merchant = merchant;
+        delete _offer.Merchant.Offers;
+        return _offer;
+      }));
+    }, [])
+    .concat()
+    .value();
+
+  app.locals.offerData = {
+    'merchants': data.merchants,
+    'offers': offers
+  };
 }

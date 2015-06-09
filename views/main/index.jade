@@ -5,17 +5,20 @@ block content
 
   .section-padding
     .container
-      pre= JSON.stringify(offerData)
-      //- .row
+      .row
         .col-md-3
           h3.no-margin-top Stores
           .row
-            each store in stores
+            each merchant in offerData.merchants
               .col-sm-6
-                a.thumbnail(href="/store/#{store.name}")
-                  img.img-responsive(src="/media/stores/#{store.logo}")
+                a.thumbnail.text-center(href="/store/#{merchant.slug}" title='#{merchant.name}')
+                  if (merchant.logo)
+                    img(src="#{merchant.logo}")
+                    | &nbsp; #{merchant.name}
+                  else
+                    | #{merchant.name} 
 
         .col-md-9
           .row
-            each offer in offers 
+            each offer in offerData.offers 
              +showOffer(offer)

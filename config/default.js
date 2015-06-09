@@ -1,8 +1,10 @@
+'use strict';
+
 var path = require('path');
 module.exports = {
-  'port': 3000,
+  'port': 5000,
   'app': {
-    'port': 3000,
+    'port': 5000,
     'compression': {
 
     },
@@ -46,4 +48,7 @@ module.exports = {
       'ssl': true
     }
   },
+  'dataApi': {
+    'url': 'http://username:password@localhost:3000'
+  }
 };

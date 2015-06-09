@@ -30,11 +30,11 @@ function init(_app) {
 function loop() {
   fetchAndWrite()
     .then(updateLocals)
-    .then(function() {
+    .then(function () {
       return bluebird.delay(updateFrequency);
     })
     .then(loop)
-    .catch(function(err) {
+    .catch(function (err) {
       throw err;
     });
 }
@@ -46,17 +46,17 @@ function attemptReadFromCache(stat) {
 
 function fetchAndWrite() {
   return request.getAsync(apiEndpoint)
-    .spread(function(res, body) {
+    .spread(function (res, body) {
       return body;
     })
     .then(parse) // make sure it's parseable before writing to the cache
-    .then(function(parsedBody) {
+    .then(function (parsedBody) {
       return fs.writeFileAsync(dataPath, JSON.stringify(parsedBody.data), 'utf8').return(parsedBody.data);
     });
 }
 
 function parse(data) {
-  return new bluebird(function(resolve, reject) {
+  return new bluebird(function (resolve, reject) {
     try {
       var parsed = JSON.parse(data);
       resolve(parsed);
@@ -69,8 +69,8 @@ function parse(data) {
 function updateLocals(data) {
   // TODO: this should probably just come from an offersDeep endpoint in the app
   var offers = _.chain(data.merchants)
-    .reduce(function(combined, merchant){
-      return combined.concat(merchant.Offers.map(function(_offer){
+    .reduce(function (combined, merchant) {
+      return combined.concat(merchant.Offers.map(function (_offer) {
         _offer.Merchant = merchant;
         delete _offer.Merchant.Offers;
         return _offer;

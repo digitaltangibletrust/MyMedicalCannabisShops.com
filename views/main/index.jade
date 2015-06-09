@@ -10,15 +10,16 @@ block content
           h3.no-margin-top Stores
           .row
             each merchant in offerData.merchants
-              .col-sm-6
-                a.thumbnail.text-center(href="/store/#{merchant.slug}" title='#{merchant.name}')
+              .col-xs-6
+                a.text-center.merchant-sidebar(href="/store/#{merchant.slug}" title='#{merchant.name}')
                   if (merchant.logo)
-                    img(src="#{merchant.logo}")
-                    | &nbsp; #{merchant.name}
+                    img.img-responsive.center-block(src="#{merchant.logo}" style="max-height:120px;")
+                    | #{merchant.name}
                   else
-                    | #{merchant.name} 
+                    .ghost-center: p #{merchant.name}
 
         .col-md-9
+          h3.no-margin-top.hidden-md.hidden-lg Offers
           .row
             each offer in offerData.offers 
              +showOffer(offer)

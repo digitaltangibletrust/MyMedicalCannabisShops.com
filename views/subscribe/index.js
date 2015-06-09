@@ -11,7 +11,7 @@ function validate(req, res, next) {
   // TODO: handle these errors better
 }
 
-function subscribe(req, res, next){
+function subscribe(req, res, next) {
   //TODO: pass these to the main app somewhere
   res.redirect('/');
 }

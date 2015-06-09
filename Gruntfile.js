@@ -14,11 +14,6 @@ module.exports = function (grunt) {
       'vendor': {
         'files': [{
           'expand': true,
-          'cwd': 'bower_components/bowser/',
-          'src': ['bowser.js'],
-          'dest': 'public/vendor/bowser/'
-        }, {
-          'expand': true,
           'cwd': 'bower_components/bootstrap/',
           'src': ['js/**', 'less/**'],
           'dest': 'public/vendor/bootstrap/'
@@ -27,21 +22,6 @@ module.exports = function (grunt) {
           'cwd': 'bower_components/lodash/dist/',
           'src': ['lodash.min.js'],
           'dest': 'public/vendor/lodash/'
-        }, {
-          'expand': true,
-          'cwd': 'bower_components/numeraljs/min/',
-          'src': ['numeral.min.js'],
-          'dest': 'public/vendor/numeraljs/'
-        }, {
-          'expand': true,
-          'cwd': 'bower_components/font-awesome/',
-          'src': ['fonts/**', 'less/**'],
-          'dest': 'public/vendor/font-awesome/'
-        }, {
-          'expand': true,
-          'cwd': 'bower_components/html5shiv/dist/',
-          'src': ['html5shiv.js'],
-          'dest': 'public/vendor/html5shiv/'
         }, {
           'expand': true,
           'cwd': 'bower_components/jquery/dist/',
@@ -54,19 +34,9 @@ module.exports = function (grunt) {
           'dest': 'public/vendor/momentjs/'
         }, {
           'expand': true,
-          'cwd': 'bower_components/d3/',
-          'src': ['d3.js'],
-          'dest': 'public/vendor/d3/'
-        }, {
-          'expand': true,
           'cwd': 'bower_components/respond/src/',
           'src': ['respond.js'],
           'dest': 'public/vendor/respond/'
-        }, {
-          'expand': true,
-          'cwd': 'bower_components/highstock-release/',
-          'src': ['highstock.js'],
-          'dest': 'public/vendor/highstock-release/'
         }]
       }
     },
@@ -140,14 +110,9 @@ module.exports = function (grunt) {
             'public/vendor/bootstrap/js/scrollspy.js',
             'public/vendor/bootstrap/js/tab.js',
             'public/vendor/bootstrap/js/transition.js',
-            // charts
-            'public/vendor/highstock-release/highstock.js',
-            'public/vendor/d3/d3.js',
             // libs
             'public/vendor/lodash/lodash.min.js',
-            'public/vendor/momentjs/moment.js',
-            'public/vendor/numeraljs/numeral.min.js',
-            'public/vendor/bowser/bowser.js',
+            'public/vendor/momentjs/moment.js'
           ]
         }
       },

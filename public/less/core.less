@@ -29,3 +29,29 @@ html, .footer-nav{
 .no-margin-top {
   margin-top: 0;
 }
+
+.merchant-sidebar{
+  .panel;
+  .panel-default;
+  display: block;
+  overflow: hidden;
+  padding: 5px;
+  position: relative;
+}
+
+.ghost-center {
+  position: relative;
+  height: 100%;
+}
+.ghost-center::before {
+  content: " ";
+  display: inline-block;
+  height: 100%;
+  width: 0%;
+  vertical-align: middle;
+}
+.ghost-center p {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}

@@ -1,12 +1,14 @@
-extends /layouts/default
+extends /views/layout
 
 block head
   title Server Error
 
-block body
-  div.page-header
-    h1 Server Error
-  p.lead
-    | Sorry something went wrong.
-  if err.stack
-    pre #{err.stack}
+block content
+  .section-padding
+    .container
+      h1 Server Error
+
+      p.lead
+        | Sorry something went wrong.
+      if (err.stack)
+        pre #{err.stack}

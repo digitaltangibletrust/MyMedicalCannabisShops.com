@@ -116,9 +116,6 @@ require('./routes').configure(app);
 //setup hipchat
 //require('lib/hipchat')(config, app);
 
-//setup mailchimp
-//require('lib/mailchimp')(config, app);
-
 //listen up
 app.listen(app.get('port'), function () {
   //and... we're live

@@ -15,4 +15,5 @@ module.exports.configure = function (app) {
   app.use(multipartMiddleware);
   app.get('/', views.main.show);
   app.post('/subscribe', views.subscribe.createSubscription);
+  app.all('*', views.http.http404);
 };

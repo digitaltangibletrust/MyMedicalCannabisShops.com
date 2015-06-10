@@ -2,6 +2,7 @@ extends /views/layout
 
 block content
   +subscribePrompt
+  hr
 
   .section-padding
     .container
@@ -14,7 +15,7 @@ block content
                 +partnerBox(partner)
 
         .col-md-9
-          h3.no-margin-top.hidden-md.hidden-lg Offers
+          h3.no-margin-top &nbsp;
           .row
             each offer in offerData.offers 
              +showOffer(offer)

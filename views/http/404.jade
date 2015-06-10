@@ -1,10 +1,12 @@
-extends /layouts/default
+extends /views/layout
 
 block head
   title Page Not Found
 
-block body
-  div.page-header
-    h1 Page Not Found
-  p.lead
-    | The resource you requested doesn't exist.
+block content
+  .section-padding
+    .container
+      h1 Page Not Found
+
+      p.lead
+        | The resource you requested doesn't exist.

@@ -1,0 +1,11 @@
+extends /views/layout
+
+block head
+  title Subscribe
+
+block content
+  .section-padding
+    .container
+      each error in errors
+        .alert.alert-warning #{error.param}: #{error.msg}
+      +subscribePrompt

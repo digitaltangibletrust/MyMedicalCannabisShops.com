@@ -1,7 +1,7 @@
 mixin subscribePrompt
   .section-padding.border-bottom
     .container
-      .row: .col-sm-8.col-sm-offset-2
+      .row: .col-md-8.col-md-offset-2
         .panel.panel-warning: .panel-body.text-center
           p.lead Get Top Offers In Your Area Delivered to Your Inbox
 
@@ -20,13 +20,13 @@ mixin showOffer(offer)
       .panel-body.text-center
         h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Cash Back
         h4 #{offer.name}
-        h5.merchant
-          a(href="/store/#{offer.Merchant.name}")
-            if (offer.Merchant.logo)
-              img(src="#{offer.Merchant.logo}" style="height:16px;")
-              | &nbsp; #{offer.Merchant.name}
+        h5
+          a(href="/store/#{offer.Partner.name}")
+            if (offer.Partner.logo)
+              img(src="#{offer.Partner.logo}" style="height:16px;")
+              | &nbsp; #{offer.Partner.name}
             else
-              | #{offer.Merchant.name} 
+              | #{offer.Partner.name} 
         p #{offer.description}
         p #{format.currency(offer.value)}
         a.btn.btn-warning.btn-block.text-uppercase(href="#{config.dataApi.url}/offer/#{offer.id}") Claim Offer

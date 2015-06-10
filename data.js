@@ -7,7 +7,7 @@ var fs = bluebird.promisifyAll(require('fs'));
 var path = require('path');
 var request = bluebird.promisifyAll(require('request'));
 
-var apiEndpoint = config.dataApi.url + '/apiroot/merchantsDeep';
+var apiEndpoint = config.dataApi.url + '/apiroot/partnersDeep';
 var dataPath = path.join(__dirname, 'data.json');
 var updateFrequency = 60 * 1000;
 
@@ -68,11 +68,11 @@ function parse(data) {
 
 function updateLocals(data) {
   // TODO: this should probably just come from an offersDeep endpoint in the app
-  var offers = _.chain(data.merchants)
-    .reduce(function (combined, merchant) {
-      return combined.concat(merchant.Offers.map(function (_offer) {
-        _offer.Merchant = merchant;
-        delete _offer.Merchant.Offers;
+  var offers = _.chain(data.partners)
+    .reduce(function (combined, partner) {
+      return combined.concat(partner.Offers.map(function (_offer) {
+        _offer.Partner = partner;
+        delete _offer.Partner.Offers;
         return _offer;
       }));
     }, [])
@@ -80,7 +80,7 @@ function updateLocals(data) {
     .value();
 
   app.locals.offerData = {
-    'merchants': data.merchants,
+    'partners': data.partners,
     'offers': offers
   };
 }

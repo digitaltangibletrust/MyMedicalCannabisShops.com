@@ -9,14 +9,14 @@ block content
         .col-md-3
           h3.no-margin-top Stores
           .row
-            each merchant in offerData.merchants
+            each partner in offerData.partners
               .col-xs-6
-                a.text-center.merchant-sidebar(href="/store/#{merchant.slug}" title='#{merchant.name}')
-                  if (merchant.logo)
-                    img.img-responsive.center-block(src="#{merchant.logo}" style="max-height:120px;")
-                    | #{merchant.name}
+                a.text-center.partner-sidebar(href="/store/#{partner.slug}" title='#{partner.name}')
+                  if (partner.logo)
+                    img.img-responsive.center-block(src="#{partner.logo}" style="max-height:120px;")
+                    | #{partner.name}
                   else
-                    .ghost-center: p #{merchant.name}
+                    .ghost-center: p #{partner.name}
 
         .col-md-9
           h3.no-margin-top.hidden-md.hidden-lg Offers

@@ -6,12 +6,12 @@
   $(window).resize(adjustHeights);
 
   function adjustHeights(){
-    equalizeHeights('.merchant-sidebar');
+    equalizeHeights('.partner-sidebar');
     equalizeHeights('.homepage-offer');
   }
 
   function equalizeHeights(selector){
-    var heights = $(selector).height('auto').map(function(merchant){
+    var heights = $(selector).height('auto').map(function(){
       return $(this).height();
     }).get();
 

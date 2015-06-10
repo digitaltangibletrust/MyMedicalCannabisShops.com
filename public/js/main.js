@@ -6,7 +6,7 @@
   $(window).resize(adjustHeights);
 
   function adjustHeights(){
-    equalizeHeights('.partner-sidebar');
+    equalizeHeights('.partner-box');
     equalizeHeights('.homepage-offer');
   }
 

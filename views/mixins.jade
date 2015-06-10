@@ -14,19 +14,23 @@ mixin subscribePrompt
           p.text-muted Plus our daily, hand-picked offers. We won't share your info. Opt out any time. 
             a(href="/privacy") Privacy Policy
 
+mixin partnerBox(partner)
+  a.text-center.partner-box(href="/store/#{partner.slug}" title='#{partner.name}')
+    .ghost-center
+      if (partner.logo)
+        div
+          img.img-responsive.center-block(src="#{partner.logo}" style="max-height:120px;")
+          | #{partner.name}
+      else
+        div #{partner.name}
+
 mixin showOffer(offer)
   .col-sm-4
     .panel.panel-default.homepage-offer
       .panel-body.text-center
         h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Cash Back
+        hr(style="margin-top:16px")
         h4 #{offer.name}
-        h5
-          a(href="/store/#{offer.Partner.name}")
-            if (offer.Partner.logo)
-              img(src="#{offer.Partner.logo}" style="height:16px;")
-              | &nbsp; #{offer.Partner.name}
-            else
-              | #{offer.Partner.name} 
-        p #{offer.description}
-        p #{format.currency(offer.value)}
-        a.btn.btn-warning.btn-block.text-uppercase(href="#{config.dataApi.url}/offer/#{offer.id}") Claim Offer
+        h5: a(href="/store/#{offer.Partner.slug}" title='#{offer.Partner.name}') #{offer.Partner.name}
+        p.text-muted #{offer.description}
+        a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="#{config.mainApp.url}/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer

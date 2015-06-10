@@ -12,11 +12,13 @@ block content
             each partner in offerData.partners
               .col-xs-6
                 a.text-center.partner-sidebar(href="/store/#{partner.slug}" title='#{partner.name}')
-                  if (partner.logo)
-                    img.img-responsive.center-block(src="#{partner.logo}" style="max-height:120px;")
-                    | #{partner.name}
-                  else
-                    .ghost-center: p #{partner.name}
+                  .ghost-center
+                    if (partner.logo)
+                      div
+                        img.img-responsive.center-block(src="#{partner.logo}" style="max-height:120px;")
+                        | #{partner.name}
+                    else
+                      div #{partner.name}
 
         .col-md-9
           h3.no-margin-top.hidden-md.hidden-lg Offers

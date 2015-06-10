@@ -1,15 +1,14 @@
 'use strict';
 
 var config = require('config');
-var _ = require('lodash');
 var bluebird = require('bluebird');
 var fs = bluebird.promisifyAll(require('fs'));
 var path = require('path');
 var request = bluebird.promisifyAll(require('request'));
 
-var apiEndpoint = config.dataApi.url + '/apiroot/partnersDeep';
+var apiEndpoint = config.dataApi.url + '/apiroot/';
 var dataPath = path.join(__dirname, 'data.json');
-var updateFrequency = 60 * 1000;
+var wait = 60 * 1000;
 
 
 var app;
@@ -19,68 +18,53 @@ function init(_app) {
   app = _app;
 
   // load initial data from the cache
-  attemptReadFromCache()
+  readCache()
     .then(updateLocals)
-    .catch(fetchAndWrite);
+    .catch(fetch)
+    .then(writeCache);
 
-  // get fresh data and update app.locals every updateFrequency
+  // get fresh data and update app.locals every `wait`
   loop();
 }
 
 function loop() {
-  fetchAndWrite()
+  fetch()
     .then(updateLocals)
-    .then(function () {
-      return bluebird.delay(updateFrequency);
-    })
+    .then(writeCache)
+    .delay(wait)
     .then(loop)
     .catch(function (err) {
       throw err;
     });
 }
 
-function attemptReadFromCache(stat) {
+function readCache() {
   return fs.readFileAsync(dataPath, 'utf8')
-    .then(parse);
+    .then(JSON.parse);
 }
 
-function fetchAndWrite() {
-  return request.getAsync(apiEndpoint)
-    .spread(function (res, body) {
-      return body;
-    })
-    .then(parse) // make sure it's parseable before writing to the cache
-    .then(function (parsedBody) {
-      return fs.writeFileAsync(dataPath, JSON.stringify(parsedBody.data), 'utf8').return(parsedBody.data);
-    });
-}
-
-function parse(data) {
-  return new bluebird(function (resolve, reject) {
-    try {
-      var parsed = JSON.parse(data);
-      resolve(parsed);
-    } catch (e) {
-      reject(e);
-    }
+function fetch() {
+  return bluebird.props({
+    'offers': getData('offers'),
+    'partners': getData('partners')
   });
 }
 
-function updateLocals(data) {
-  // TODO: this should probably just come from an offersDeep endpoint in the app
-  var offers = _.chain(data.partners)
-    .reduce(function (combined, partner) {
-      return combined.concat(partner.Offers.map(function (_offer) {
-        _offer.Partner = partner;
-        delete _offer.Partner.Offers;
-        return _offer;
-      }));
-    }, [])
-    .concat()
-    .value();
+function getData(endpoint) {
+  return request.getAsync(apiEndpoint + endpoint)
+    .spread(function (res, body) {
+      return body;
+    })
+    .then(JSON.parse)
+    .then(function (parsedBody) {
+      return parsedBody.data[endpoint];
+    });
+}
 
-  app.locals.offerData = {
-    'partners': data.partners,
-    'offers': offers
-  };
+function writeCache(data) {
+  return fs.writeFileAsync(dataPath, JSON.stringify(data), 'utf8');
+}
+
+function updateLocals(data) {
+  app.locals.offerData = data;
 }

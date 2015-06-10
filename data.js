@@ -6,7 +6,7 @@ var fs = bluebird.promisifyAll(require('fs'));
 var path = require('path');
 var request = bluebird.promisifyAll(require('request'));
 
-var apiEndpoint = config.dataApi.url + '/apiroot/';
+var apiRoot = config.dataApi.url;
 var dataPath = path.join(__dirname, 'data.json');
 var wait = 60 * 1000;
 
@@ -51,7 +51,7 @@ function fetch() {
 }
 
 function getData(endpoint) {
-  return request.getAsync(apiEndpoint + endpoint)
+  return request.getAsync(apiRoot + endpoint)
     .spread(function (res, body) {
       return body;
     })

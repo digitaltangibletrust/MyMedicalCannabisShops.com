@@ -9,6 +9,6 @@ module.exports = {
     'uri': 'postgres://mmcs:HbS9MtZyTpfC76MaUIoq@localhost/mycannabisshops'
   },
   'dataApi': {
-    'url': 'https://my.sericapay.com'
+    'url': 'https://my.sericapay.com/apiroot/'
   }
 };

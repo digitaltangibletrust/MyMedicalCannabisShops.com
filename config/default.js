@@ -49,6 +49,6 @@ module.exports = {
     }
   },
   'dataApi': {
-    'url': 'http://username:password@localhost:3000'
+    'url': 'http://username:password@localhost:3000/apiroot/'
   }
 };

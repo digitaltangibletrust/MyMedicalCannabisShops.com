@@ -14,6 +14,7 @@ var views = modLoader.load(mods);
 module.exports.configure = function (app) {
   app.use(multipartMiddleware);
   app.get('/', views.main.show);
+  app.get('/partner/:slug', views.main.showPartner);
   app.post('/subscribe', views.subscribe.createSubscription);
   app.all('*', views.http.http404);
 };

@@ -1,0 +1,12 @@
+extends /views/layout
+
+block content
+  .container      
+    .section-padding
+      h3 #{partner.name} Offers
+      hr
+      .row
+        .col-md-9
+          .row
+            each offer in partner.Offers
+             +showOffer(partner, offer)

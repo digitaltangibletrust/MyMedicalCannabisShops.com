@@ -3,7 +3,7 @@ mixin subscribePrompt
     .container
       .row: .col-md-8.col-md-offset-2
         .panel.panel-warning: .panel-body.text-center
-          p.lead Get Top Offers In Your Area Delivered to Your Inbox
+          p.lead Get top offers in your area delivered to your inbox
 
           .row: .col-sm-6.col-sm-offset-3: form.form(method="post", action="/subscribe")
             .form-group: .input-group
@@ -11,11 +11,11 @@ mixin subscribePrompt
               span.input-group-btn
                 button.btn.btn-warning(type="submit") Subscribe
 
-          p.text-muted Plus our daily, hand-picked offers. We won't share your info. Opt out any time. 
+          p.text-muted Plus occasional, hand-picked offers. We won't share your info. Opt out any time. 
             a(href="/privacy") Privacy Policy
 
 mixin partnerBox(partner)
-  a.text-center.partner-box(href="/store/#{partner.slug}" title='#{partner.name}')
+  a.text-center.partner-box(href="/partner/#{partner.slug}" title='#{partner.name}')
     .ghost-center
       if (partner.logo)
         div
@@ -24,13 +24,13 @@ mixin partnerBox(partner)
       else
         div #{partner.name}
 
-mixin showOffer(offer)
+mixin showOffer(partner, offer)
   .col-sm-4
     .panel.panel-default.homepage-offer
       .panel-body.text-center
-        h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Cash Back
+        h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Bonus
         hr(style="margin-top:16px")
         h4 #{offer.name}
-        h5: a(href="/store/#{offer.Partner.slug}" title='#{offer.Partner.name}') #{offer.Partner.name}
+        h5: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}
         p.text-muted #{offer.description}
         a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="#{config.mainApp.url}/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer

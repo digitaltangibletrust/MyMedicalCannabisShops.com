@@ -37,6 +37,11 @@ module.exports = function (grunt) {
           'cwd': 'bower_components/respond/src/',
           'src': ['respond.js'],
           'dest': 'public/vendor/respond/'
+        }, {
+          'expand': true,
+          'cwd': 'bower_components/font-awesome/',
+          'src': ['fonts/**', 'less/**'],
+          'dest': 'public/vendor/font-awesome/'
         }]
       }
     },

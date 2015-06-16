@@ -1,7 +1,7 @@
 'use strict';
 
-// var config = require('config');
-// var request = require('request');
+var config = require('config');
+var request = require('request');
 
 module.exports.createSubscription = [
   validate,
@@ -22,8 +22,20 @@ function validationError(err, req, res, next) {
 }
 
 function subscribe(req, res, next) {
-  // TODO: POST email to mainApp which will trigger mailchimp subscription
-  next();
+  var subscriptionUrl = config.mainApp.url + '/mmcs';
+  request.post(subscriptionUrl, {
+    'body': {
+      'email': req.body.email
+    },
+    'json': true
+  }, function (err, response, body) {
+    if (err) {
+      return next(err);
+    }
+
+    // TODO: handle possible errors in the response body
+    next();
+  });
 }
 
 function success(req, res, next) {

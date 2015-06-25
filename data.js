@@ -62,7 +62,7 @@ function getData(endpoint) {
 }
 
 function writeCache(data) {
-  return fs.writeFileAsync(dataPath, JSON.stringify(data), 'utf8');
+  return fs.writeFileAsync(dataPath, JSON.stringify(data || {}), 'utf8');
 }
 
 function updateLocals(data) {

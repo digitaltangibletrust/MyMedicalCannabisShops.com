@@ -38,8 +38,8 @@ module.exports = {
   },
   'smtp': {
     'from': {
-      'name': 'MyMedicalCannabisShops',
-      'address': 'info@email.mymedicalcannabisshops.com'
+      'name': 'DispensaryOffers.com',
+      'address': 'info@email.dispensaryoffers.com'
     },
     'credentials': {
       'user': 'admin',
@@ -48,6 +48,7 @@ module.exports = {
       'ssl': true
     }
   },
+  'projectName': 'DispensaryOffers',
   'mainApp': {
     'url': 'http://localhost:3000'
   },

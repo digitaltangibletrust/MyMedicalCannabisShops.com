@@ -5,7 +5,8 @@ var multipartMiddleware = multipart();
 var mods = [
   'main',
   'http',
-  'subscribe'
+  'subscribe',
+  'merchant'
 ];
 
 var modLoader = require('./views/index.js');
@@ -16,5 +17,6 @@ module.exports.configure = function (app) {
   app.get('/', views.main.show);
   app.get('/partner/:slug', views.main.showPartner);
   app.post('/subscribe', views.subscribe.createSubscription);
+  app.get('/merchant', views.merchant.showForm);
   app.all('*', views.http.http404);
 };

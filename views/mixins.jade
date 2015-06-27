@@ -33,4 +33,4 @@ mixin showOffer(partner, offer)
         h4 #{offer.name}
         h5: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}
         p.text-muted #{offer.description}
-        a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="#{offer.url}") Claim #{format.currency(offer.value, 0)} Offer
+        a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer

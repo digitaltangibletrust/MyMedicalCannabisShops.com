@@ -23,5 +23,16 @@ module.exports.load = function (mods) {
       modules[mod] = _.extend(modules[mod] || {}, require(modPath(mod) + '/index.js'));
     }
   });
+
+  modules.setupParams = function (app) {
+    for (var mod in modules) {
+      var params = modules[mod].params;
+      if (params) {
+        for (var param in params) {
+          app.param(param, params[param]);
+        }
+      }
+    }
+  };
   return modules;
 };

@@ -3,6 +3,7 @@
 var path = require('path');
 module.exports = {
   'port': 5000,
+  'offerCookie': 'dispensaryoffer',
   'app': {
     'port': 5000,
     'compression': {

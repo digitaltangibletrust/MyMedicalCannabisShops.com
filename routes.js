@@ -19,6 +19,6 @@ module.exports.configure = function (app) {
   app.get('/partner/:partner_slug', views.main.showPartner);
   app.post('/subscribe', views.subscribe.createSubscription);
   app.get('/offer/:offer_id', views.offer.view);
-  app.post('/offer/:offer_id', views.offer.redeem);
+  app.get('/offer/:offer_id/claim', views.offer.claim);
   app.all('*', views.http.http404);
 };

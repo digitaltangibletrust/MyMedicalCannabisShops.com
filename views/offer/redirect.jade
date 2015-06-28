@@ -1,0 +1,25 @@
+extends /views/layout
+
+block content
+  script(type='text/javascript').
+   $(document).ready(function () {
+     var elem = $('#redirector');
+     var time = Number($(elem).data('delay'));
+     time = isNaN(time) ? 5 : time;
+     var renderLeft = setInterval(function () {
+       time -= 1;
+       elem.text(time  + ' seconds');
+     }, 1000);
+     setTimeout(function () {
+       clearInterval(renderLeft);
+       window.location = elem.data('url');
+     }, time * 1000);
+   });
+    
+
+  .section-padding
+    .container
+      .row
+        .col-md-3
+         h1 you will be redirected, soonish to here #{offer.url} in 
+          p(id="redirector", data-delay="5", data-url="#{offer.url}") 5 seconds

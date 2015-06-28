@@ -1,0 +1,22 @@
+extends /views/layout
+
+block content
+  
+  .section-padding
+    .container
+      .row
+        .col-md-3
+          h3.no-margin-top Offer
+        
+      .row
+       .col-sm-8
+        .panel.panel-default.homepage-offer
+          .panel-body.text-center
+            h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Bonus
+            hr(style="margin-top:16px")
+            h4 #{offer.name}
+            h5: a(href="/partner/#{offer.Partner.slug}" title='#{offer.Partner.name}') #{offer.Partner.name}
+            p.text-muted #{offer.description}
+            a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="/") back to offers   
+            a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="/offer/#{offer.id}/redeem") Redeem #{format.currency(offer.value, 0)} Offer and go to merchant website     
+                 

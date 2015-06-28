@@ -1,5 +1,6 @@
 'use strict';
 var _ = require('lodash');
+var config = require('config');
 
 module.exports.params = {
   'offer_id': function (req, res, next, id) {
@@ -15,8 +16,11 @@ module.exports.params = {
 };
 
 module.exports.view = function (req, res, next) {
-  return res.json(req.offer);
+  return res.render('offer/offer', {
+    'offer': req.offer
+  });
 };
-module.exports.redeem = function (req, res, next) {
 
+module.exports.claim = function (req, res, next) {
+  return res.redirect(config.mainApp.url + '/offer/' + req.offer.id + '/claim?t=' + Math.random());
 };

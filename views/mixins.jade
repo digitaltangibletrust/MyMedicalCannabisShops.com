@@ -23,7 +23,19 @@ mixin partnerBox(partner)
           | #{partner.name}
       else
         div #{partner.name}
-
+mixin modalTemplate
+  #offerModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='offerLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4#offerLabel.modal-title
+        .modal-body
+          h5(id='partner')
+          | ...
+        .modal-footer
+          a#claim.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim(href="#") Redeem Now
 mixin showOffer(partner, offer)
   .col-sm-4
     .panel.panel-default.homepage-offer
@@ -31,6 +43,6 @@ mixin showOffer(partner, offer)
         h3.text-orange.no-margin-top #{format.currency(offer.value, 0)} Bonus
         hr(style="margin-top:16px")
         h4 #{offer.name}
-        h5: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}
+        h5.partner-info: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}
         p.text-muted #{offer.description}
-        a.btn.btn-warning.btn-block.btn-lg.text-uppercase(href="/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer
+        a.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim-offer(href="/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer

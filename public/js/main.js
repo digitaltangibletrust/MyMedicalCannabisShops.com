@@ -25,6 +25,7 @@
     var claimUrl = offer.children('a.btn.claim-offer').attr('href') + '/claim';
     $('#offerLabel').text(offer.children('h4').text());
     $('#claim').attr('href', claimUrl);
+    $('#claimDescription').html(offer.children('.hidden.claim-descr').html());
     $('#partner').html(offer.children('h5.partner-info').html());
     $('#offerModal').modal('show');
   });

@@ -33,7 +33,7 @@ mixin modalTemplate
           h4#offerLabel.modal-title
         .modal-body
           h5(id='partner')
-          | ...
+          #claimDescription
         .modal-footer
           a#claim.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim(href="#") Redeem Now
 mixin showOffer(partner, offer)
@@ -45,4 +45,5 @@ mixin showOffer(partner, offer)
         h4 #{offer.name}
         h5.partner-info: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}
         p.text-muted #{offer.description}
+        .hidden.claim-descr #{offer.claimDescription}
         a.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim-offer(href="/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer

@@ -19,8 +19,8 @@ function init(_app) {
 
   // load initial data from the cache
   readCache()
-    .then(updateLocals)
     .catch(fetch)
+    .then(updateLocals)
     .then(writeCache);
 
   // get fresh data and update app.locals every `wait`
@@ -67,4 +67,5 @@ function writeCache(data) {
 
 function updateLocals(data) {
   app.locals.offerData = data;
+  return data;
 }

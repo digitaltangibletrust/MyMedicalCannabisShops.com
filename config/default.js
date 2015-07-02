@@ -53,6 +53,6 @@ module.exports = {
     'url': 'http://localhost:3000'
   },
   'dataApi': {
-    'url': 'http://serica:a93kc7j@localhost:3000/apiroot/'
+    'url': 'http://serica:a93kc7j@localhost:3000/apiroot'
   }
 };

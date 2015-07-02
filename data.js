@@ -51,7 +51,7 @@ function fetch() {
 }
 
 function getData(endpoint) {
-  return request.getAsync(apiRoot + endpoint)
+  return request.getAsync(apiRoot + '/' + endpoint)
     .spread(function (res, body) {
       return body;
     })

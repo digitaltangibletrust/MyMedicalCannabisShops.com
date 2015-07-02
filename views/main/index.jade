@@ -8,17 +8,17 @@ block content
   .section-padding
     .container
       .row
-        .col-md-3
-          h3.no-margin-top Stores
-          .row
-            each partner in offerData.partners
-              .col-xs-6
-                +partnerBox(partner)
-
-        .col-md-9
+        .col-md-9.col-md-push-3
           .panel.panel-warning: .panel-body
             h2.no-margin.text-orange.text-center $#{total} in total offers! 
           .row
             each offer in offerData.offers 
              +showOffer(offer.Partner, offer)
+
+        .col-md-3.col-md-pull-9
+          h3.no-margin-top Stores
+          .row
+            each partner in offerData.partners
+              .col-lg-6
+                +partnerBox(partner)
   +modalTemplate

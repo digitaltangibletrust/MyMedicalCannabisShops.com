@@ -17,12 +17,11 @@ mixin subscribePrompt
 mixin partnerBox(partner)
   a.text-center.partner-box(href="/partner/#{partner.slug}" title='#{partner.name}')
     .ghost-center
-      if (partner.logo)
-        div
+      div(style="width:99%;")
+        if (partner.logo)
           img.img-responsive.center-block(src="#{partner.logo}" style="max-height:120px;")
-          | #{partner.name}
-      else
-        div #{partner.name}
+        | #{partner.name}
+
 mixin modalTemplate
   #offerModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='offerLabel')
     .modal-dialog(role='document')
@@ -36,6 +35,7 @@ mixin modalTemplate
           #claimDescription
         .modal-footer
           a#claim.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim(href="#") Redeem Now
+
 mixin showOffer(partner, offer)
   .col-sm-4
     .panel.panel-default.homepage-offer

@@ -35,7 +35,7 @@ function loop() {
     .then(loop)
     .catch(function (err) {
       console.log(err);
-      return true;
+      setTimeout(loop, wait);
     });
 
 }

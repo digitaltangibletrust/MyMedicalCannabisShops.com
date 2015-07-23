@@ -11,11 +11,7 @@ module.exports.params = {
     if (!partner) {
       return res.http404();
     }
-    var offers = _.clone(req.app.locals.offerData.offers);
 
-    partner.Offers = offers.filter(function (offer) {
-      return offer.Partner.slug === partner.slug;
-    });
     req.partner = partner;
     return next();
   }

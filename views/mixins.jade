@@ -40,7 +40,7 @@ mixin showOffer(partner, offer)
   .col-sm-4
     .panel.panel-default.homepage-offer
       .panel-body.text-center
-        h3.text-orange.no-margin-top #{format.currency(offer.value, 0)}  #{offer.type === 'discount' ? 'discount' : 'Bonus' }
+        h3.text-orange.no-margin-top #{format.currency(offer.value, 0)}  #{offer.type === 'discount' ? 'Discount' : 'Bonus' }
         hr(style="margin-top:16px")
         h4 #{offer.name}
         h5.partner-info: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}

@@ -36,9 +36,8 @@ function loop() {
     .catch(function (err) {
       console.log(err);
       return true;
-    })
-    .delay(wait)
-    .then(loop);
+    });
+
 }
 
 function readCache() {

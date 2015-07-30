@@ -1,6 +1,7 @@
 block vars
 
 include mixins
+include thirdPartyMixins
 
 doctype html
 html
@@ -22,6 +23,9 @@ html
       block content
     .footer
       include _footer
+
+    +GoogleAnalytics
+    +ShareThis
 
     script(src='/js/thirdPartyAndBrowserify.min.js?#{cacheBreaker}')
     script(src='/js/app.min.js?#{cacheBreaker}')

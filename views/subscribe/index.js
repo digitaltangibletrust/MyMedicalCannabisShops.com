@@ -12,6 +12,7 @@ module.exports.createSubscription = [
 
 function validate(req, res, next) {
   req.checkBody('email').isEmail();
+  req.checkBody('zip').isNumeric().isLength(5);
   next(req.validationErrors());
 }
 
@@ -25,7 +26,8 @@ function subscribe(req, res, next) {
   var subscriptionUrl = config.mainApp.url + '/mmcs';
   request.post(subscriptionUrl, {
     'body': {
-      'email': req.body.email
+      'email': req.body.email,
+      'zip': req.body.zip
     },
     'json': true
   }, function (err, response, body) {

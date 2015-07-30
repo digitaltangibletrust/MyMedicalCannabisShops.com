@@ -5,12 +5,16 @@ mixin subscribePrompt
         .panel.panel-default: .panel-body.text-center
           p.lead Get top offers in your area delivered to your inbox
 
-          .row: .col-sm-6.col-sm-offset-3: form.form(method="post", action="/subscribe")
-            .form-group: .input-group
+          form.form-inline(method="post", action="/subscribe")
+            .form-group
+              input.form-control(type="text" size="8" name="zip", placeholder="Zip Code")
+            | &nbsp;
+            .form-group
               input.form-control(type="text" size="50" name="email", placeholder="Enter your email address")
-              span.input-group-btn
-                button.btn.btn-warning(type="submit") Subscribe
+            | &nbsp;
+            button.btn.btn-warning(type="submit") Subscribe
 
+          br
           p.text-muted Plus occasional, hand-picked offers. We won't share your info. Opt out any time. 
             a(href="/privacy") Privacy Policy
 

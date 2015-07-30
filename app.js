@@ -84,6 +84,9 @@ app.locals.projectName = app.get('project-name');
 app.locals.copyrightYear = new Date().getFullYear();
 app.locals.copyrightName = app.get('company-name');
 app.locals.cacheBreaker = 'br34k-52';
+app.locals.env = process.env.NODE_ENV || 'development';
+app.locals.title = 'Exclusive Dispensary Offers, Coupons, and Discounts';
+app.locals.meta_description = '';
 
 //templating helpers
 app.locals.format = {

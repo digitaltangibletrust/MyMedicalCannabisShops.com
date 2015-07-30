@@ -24,7 +24,9 @@ module.exports.show = function (req, res, next) {
     return sum += offer.value;
   }, 0);
 
-  res.render('main/index');
+  res.render('main/index', {
+    'meta_description': 'Over $365 in offers from dispensaries that are free for you to redeem.'
+  });
 };
 
 module.exports.showPartner = function (req, res, next) {
@@ -33,6 +35,7 @@ module.exports.showPartner = function (req, res, next) {
   }
 
   res.render('main/partner', {
-    'partner': req.partner
+    'partner': req.partner,
+    'title': req.partner.name + ' Special Offers, Deals, and Coupons'
   });
 };

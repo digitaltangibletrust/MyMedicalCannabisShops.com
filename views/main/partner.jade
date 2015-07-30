@@ -1,13 +1,26 @@
 extends /views/layout
 
+
+extends /views/layout
+
 block content
-  .container      
-    .section-padding
-      h3 #{partner.name} Offers
-      hr
+  .section-padding
+    .container
       .row
-        .col-md-9
+        .col-md-12
+          h3 #{partner.name} Offers
+      .row
+        .col-md-9.col-md-push-3
           .row
             each offer in partner.Offers
              +showOffer(partner, offer)
+        .col-md-3.col-md-pull-9
+          .row
+            .col-md-12
+              img.img-responsive.center-block(src="#{partner.logo}")
+          .row.text-center
+            br
+            p.lead
+              a(href="#{partner.url}") #{partner.url} 
+
   +modalTemplate

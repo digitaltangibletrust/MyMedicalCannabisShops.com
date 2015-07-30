@@ -1,5 +1,9 @@
 .container
-  a(href="/") 
-    img.logo(src="/media/logo-horiz.png")
-  .pull-right.nav-buttons
-    a.btn.btn-primary(href="https://my.sericapay.com/merchant/welcome") I'm a Merchant
+  .row.vertical-align
+    .col-md-3
+      a(href="/", style) 
+        img.logo(src="/media/logo-horiz.png")
+    .col-md-5
+      +ShareThisButtons
+    .col-md-3.pull-right.nav-buttons
+      a.btn.btn-primary(href="https://my.sericapay.com/merchant/welcome") I'm a Merchant

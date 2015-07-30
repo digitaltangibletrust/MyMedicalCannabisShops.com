@@ -84,6 +84,7 @@ app.locals.projectName = app.get('project-name');
 app.locals.copyrightYear = new Date().getFullYear();
 app.locals.copyrightName = app.get('company-name');
 app.locals.cacheBreaker = 'br34k-52';
+app.locals.env = process.env.NODE_ENV || 'development';
 
 //templating helpers
 app.locals.format = {

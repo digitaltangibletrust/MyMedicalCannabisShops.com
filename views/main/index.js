@@ -36,6 +36,6 @@ module.exports.showPartner = function (req, res, next) {
 
   res.render('main/partner', {
     'partner': req.partner,
-    'meta_description': req.partner.name + ' Special Offers, Deals, and Coupons'
+    'title': req.partner.name + ' Special Offers, Deals, and Coupons'
   });
 };

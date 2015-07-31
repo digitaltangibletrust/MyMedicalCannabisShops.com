@@ -19,7 +19,7 @@
     $(selector).height(maxHeight);
   }
 
-  $(function(){ //document.ready
+  $(function () { //document.ready
     $('.claim-offer').click(function (e) {
       e.preventDefault();
       var offer = $(this).parent();
@@ -30,6 +30,10 @@
       $('#claimDescription').html(offer.children('.hidden.claim-descr').html());
       $('#partner').html(offer.children('h5.partner-info').html());
       $('#offerModal').modal('show');
+    });
+    $('.howitworks').click(function (e) {
+      e.preventDefault();
+      $('#howitworks').modal('show');
     });
   });
 

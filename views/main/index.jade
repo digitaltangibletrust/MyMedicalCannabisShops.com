@@ -7,7 +7,12 @@ block content
       .row
         .col-md-9.col-md-push-3
           .panel.panel-warning: .panel-body
-            h2.no-margin.text-orange.text-center $#{total} in total offers! 
+            .row
+              .col-md-9
+                h2.no-margin.text-orange.text-center $#{total} in total offers!
+              .col-md-3.pull-right.vertical-align
+                a.howitworks(href="#") 
+                  h3.no-margin.text-orange.text-center How it works
           .row
             each offer in offerData.offers 
              +showOffer(offer.Partner, offer)
@@ -19,3 +24,4 @@ block content
               .col-lg-6
                 +partnerBox(partner)
   +modalTemplate
+  +howitworks

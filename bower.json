@@ -6,6 +6,8 @@
     "jquery": "~1.11.0",
     "respond": "~1.4.2",
     "momentjs": "~2.5.0",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "angularjs": "~1.4.3",
+    "flipclock": "~0.7.7"
   }
 }

@@ -14,6 +14,16 @@ module.exports = function (grunt) {
       'vendor': {
         'files': [{
           'expand': true,
+          'cwd': 'bower_components/angularjs/',
+          'src': ['angular.js'],
+          'dest': 'public/vendor/angularjs/'
+        }, {
+          'expand': true,
+          'cwd': 'bower_components/flipclock/compiled/',
+          'src': ['flipclock.min.js', 'flipclock.css'],
+          'dest': 'public/vendor/flipclock/'
+        }, {
+          'expand': true,
           'cwd': 'bower_components/bootstrap/',
           'src': ['js/**', 'less/**'],
           'dest': 'public/vendor/bootstrap/'
@@ -116,6 +126,7 @@ module.exports = function (grunt) {
             'public/vendor/bootstrap/js/tab.js',
             'public/vendor/bootstrap/js/transition.js',
             // libs
+            'public/vendor/angularjs/angular.js',
             'public/vendor/lodash/lodash.min.js',
             'public/vendor/momentjs/moment.js'
           ]
@@ -124,7 +135,8 @@ module.exports = function (grunt) {
       'app': {
         'files': {
           'public/js/app.min.js': [
-            'public/js/main.js'
+            'public/js/main.js',
+            'public/js/angular-app.js'
           ]
         }
       }

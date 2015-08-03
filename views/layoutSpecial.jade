@@ -1,0 +1,40 @@
+block vars
+
+include mixins
+include thirdPartyMixins
+
+doctype html
+html
+  head
+    block head
+      title #{title}
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon' href='/media/favicon.png?v=1')
+    link(rel='stylesheet', href='/less/core.min.css?#{cacheBreaker}')
+    script(src='/vendor/jquery/jquery.min.js?#{cacheBreaker}')
+    meta(name='description', content='#{meta_description}')
+
+
+    block neck
+  
+  body
+    .nav-wrap
+      .container
+        .row
+          .col-md-3
+            a(href="/", style) 
+              img.logo(src="/media/logo-horiz.png")
+          .col-md-6.col-md-offset-3.text-right(style="padding-top:40px")
+            h4.no-margin The Best Cannabis Deals on the Web
+    .page(ng-app="app")
+      block content
+    .footer
+      include _footer
+
+    +GoogleAnalytics
+    +ShareThisCode
+    +Olark
+    script(src='/js/thirdPartyAndBrowserify.min.js?#{cacheBreaker}')
+    script(src='/js/app.min.js?#{cacheBreaker}')
+
+    block feet

@@ -6,7 +6,8 @@ var mods = [
   'main',
   'http',
   'subscribe',
-  'offer'
+  'offer',
+  'special'
 ];
 
 var modLoader = require('./views/index.js');
@@ -20,5 +21,9 @@ module.exports.configure = function (app) {
   app.post('/subscribe', views.subscribe.createSubscription);
   app.get('/offer/:offer_id', views.offer.view);
   app.get('/offer/:offer_id/claim', views.offer.claim);
+
+  // custom
+  app.get('/alldae-24-hour-payday-deal', views.special.alldae);
+
   app.all('*', views.http.http404);
 };

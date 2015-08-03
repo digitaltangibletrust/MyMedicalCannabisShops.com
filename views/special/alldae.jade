@@ -1,0 +1,54 @@
+extends /views/layoutSpecial
+
+block neck
+  link(rel='stylesheet', href='/vendor/flipclock/flipclock.css?#{cacheBreaker}')
+  script(src='/vendor/flipclock/flipclock.min.js?#{cacheBreaker}')
+  script.
+    $(function() {
+      var endDate = moment('2015-08-06 18:00:00').valueOf();
+      var diff = (endDate - moment().valueOf()) / 1000;
+      var clock = $('#clock').FlipClock(diff, {
+        countdown: true
+      });
+    });
+
+block content
+  div(ng-controller="alldaeOfferController")
+    .section-padding.bg-green.text-center
+      .container
+        h2 24-Hour Payday Deal
+        p.lead Get $150 Worth of Cannabis for Only $80!
+          br
+          strong Save $70 (53% OFF)
+        #clock(style="width: 460px;margin: 40px auto 0;")
+
+    .stepper
+      .container
+        .row
+          .col-sm-4.text-center.step(ng-class="{active: step >= 1}") 1) Medical Status
+          .col-sm-4.text-center.step(ng-class="{active: step >= 2}") 2) Enter Email
+          .col-sm-4.text-center.step(ng-class="{active: step >= 3}")  3) Claim Deal
+
+    .section-padding
+      .container.text-center(ng-show="step === 1")
+        h1 Do you have a Doctor's Recommendation for Medical Cannabis?
+        p Select one
+        .row
+          .col-sm-4.col-sm-offset-1
+            a.btn.btn-lg.btn-block.btn-default(href="https://www.hellomd.com/?ref=56B4D935") 
+              h2.no-margin-top NO
+              | I do not have a recommendation
+          .col-sm-4.col-sm-offset-2
+            a.btn.btn-lg.btn-block.btn-success(ng-click="step = 2")
+              h2.no-margin-top YES
+              | I have a recommendation
+
+      .container.text-center(ng-show="step === 2")
+        h2 Enter your email
+        .row
+          .col-sm-4.col-sm-offset-4
+            form.form(ng-submit="step = 3")
+              .form-group
+                input.form-control.input-lg(type="email" ng-model="email")
+              button.btn.btn-lg.btn-success Next
+              

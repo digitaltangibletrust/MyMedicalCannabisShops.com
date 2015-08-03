@@ -10,9 +10,8 @@ block content
             .row
               .col-md-9
                 h2.no-margin.text-orange.text-center $#{total} in total offers!
-              .col-md-3.pull-right.vertical-align
-                a.howitworks(href="#") 
-                  h3.no-margin.text-orange.text-center How it works
+              .col-md-3.text-right
+                a.btn.btn-default.howitworks(href="#") How it works
           .row
             each offer in offerData.offers 
              +showOffer(offer.Partner, offer)

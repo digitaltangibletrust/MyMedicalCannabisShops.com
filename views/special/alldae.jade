@@ -20,7 +20,7 @@ block content
         p.lead Get $150 Worth of Cannabis for Only $80!
           br
           strong Save $70 (53% OFF)
-        #clock(style="width: 460px;margin: 40px auto 0;")
+        #clock
 
     .stepper
       .container
@@ -31,38 +31,38 @@ block content
 
     .section-padding
       .container.text-center
-        .alert.alert-danger(ng-show="error") {{error}}
+        .ng-cloak.alert.alert-danger(ng-show="error") {{error}}
 
         div(ng-show="step === 1")
-          h1 Do you have a Doctor's Recommendation for Medical Cannabis?
+          h2 Do you have a Doctor's Recommendation for Medical Cannabis?
           p Select one
-          .row
-            .col-sm-4.col-sm-offset-1
-              a.btn.btn-lg.btn-block.btn-default(href="https://www.hellomd.com/?ref=56B4D935")
-                h2.no-margin-top NO
-                | I do not have a recommendation
-            .col-sm-4.col-sm-offset-2
-              a.btn.btn-lg.btn-block.btn-success(ng-click="step = 2")
-                h2.no-margin-top YES
-                | I have a recommendation
+          a.btn.btn-lg.btn-default(style="width:300px;" href="https://www.hellomd.com/?ref=56B4D935")
+            h2.no-margin-top NO
+            | I do not have a recommendation
 
-        div(ng-show="step === 2")
+          span.hidden-xs &nbsp;&nbsp;&nbsp;
+
+          a.btn.btn-lg.btn-danger(style="width:300px;" ng-click="step = 2")
+            h2.no-margin-top YES
+            | I have a recommendation
+
+        .ng-cloak(ng-show="step === 2")
           h2 Enter your Delivery ZIP Code
           .row
             .col-sm-4.col-sm-offset-4
               form.form(ng-submit="submitZip()")
                 .form-group
-                  input.form-control.input-lg(type="tel" pattern="[0-9]{4,5}" ng-model="zip")
-                button.btn.btn-lg.btn-success Next
+                  input.form-control.input-lg.text-center(type="tel" pattern="[0-9]{4,5}" ng-model="zip")
+                button.btn.btn-lg.btn-danger Next
 
-        div(ng-show="step === 3")
-          h2 Enter your email
+        .ng-cloak(ng-show="step === 3")
+          h2 Enter your Email Address
           .row
             .col-sm-4.col-sm-offset-4
               form.form(ng-submit="submitEmail()")
                 .form-group
-                  input.form-control.input-lg(type="email" ng-model="email")
-                button.btn.btn-lg.btn-success(ng-disabled="submitted") Next
+                  input.form-control.input-lg.text-center(type="email" ng-model="email" placeholder="sample@email.com")
+                button.btn.btn-lg.btn-danger(ng-disabled="submitted") Finish
 
     .section-padding
       .container.text-center

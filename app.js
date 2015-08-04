@@ -77,6 +77,14 @@ app.use(function (err, req, res, next) {
   }
 });
 
+//global vars for angular
+app.use(function (req, res, next) {
+  res.locals.globalVars = {
+    'subscriptionUrl': config.mainApp.url + '/mmcs'
+  };
+  next();
+});
+
 app.use(httpHelpers.http500);
 
 //global locals

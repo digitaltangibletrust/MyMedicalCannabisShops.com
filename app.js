@@ -58,7 +58,10 @@ app.use(methodOverride('X-Method-Override')); // IBM
 
 app.use(Cookies.express(['array', 'of', 'security', 'keys', 'for', 'keygrip']));
 app.use(requestValidator());
-app.use(helmet());
+
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.xssFilter());
 
 //early 404 helper
 app.use(function (req, res, next) {

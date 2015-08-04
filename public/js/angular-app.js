@@ -29,14 +29,14 @@ function alldaeOfferController($window, $scope, $http) {
     if (!$scope.email) {
       $scope.error = 'Please enter a valid email address.';
     } else {
-      $http.post($window.globals.subscriptionUrl, {
+      $http.post('/subscribe', {
         'email': $scope.email,
         'zip': $scope.zip
-      }).success(function(res){
+      }).success(function(res) {
         $window.location = 'http://alldae.club';
-      }).error(function(){
+      }).error(function(err) {
         $scope.submitted = false;
-        $scope.error = 'We ran into an error. Please make sure you entered a valid email address.';
+        $scope.error = 'We ran into an error: ' + JSON.stringify(err);
       });
     }
   };

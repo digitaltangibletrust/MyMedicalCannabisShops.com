@@ -58,10 +58,7 @@ app.use(methodOverride('X-Method-Override')); // IBM
 
 app.use(Cookies.express(['array', 'of', 'security', 'keys', 'for', 'keygrip']));
 app.use(requestValidator());
-
-app.use(helmet.frameguard());
-app.use(helmet.hidePoweredBy());
-app.use(helmet.xssFilter());
+app.use(helmet());
 
 //early 404 helper
 app.use(function (req, res, next) {
@@ -78,14 +75,6 @@ app.use(function (err, req, res, next) {
   } else {
     return next(err);
   }
-});
-
-//global vars for angular
-app.use(function (req, res, next) {
-  res.locals.globalVars = {
-    'subscriptionUrl': config.mainApp.url + '/mmcs'
-  };
-  next();
 });
 
 app.use(httpHelpers.http500);

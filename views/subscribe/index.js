@@ -17,6 +17,13 @@ function validate(req, res, next) {
 }
 
 function validationError(err, req, res, next) {
+  if (req.xhr) {
+    return res.json(400, {
+      'success': false,
+      'errors': err
+    });
+  }
+
   res.render('subscribe/validation', {
     'errors': err
   });
@@ -41,5 +48,10 @@ function subscribe(req, res, next) {
 }
 
 function success(req, res, next) {
+  if (req.xhr) {
+    return res.json({
+      'success': true
+    });
+  }
   res.render('subscribe/success');
 }

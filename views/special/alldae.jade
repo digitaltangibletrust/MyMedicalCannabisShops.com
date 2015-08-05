@@ -7,9 +7,15 @@ block neck
     $(function() {
       var endDate = moment('2015-08-06 18:00:00').valueOf();
       var diff = (endDate - moment().valueOf()) / 1000;
-      var clock = $('#clock').FlipClock(diff, {
-        countdown: true
-      });
+      var options = {};
+      if (diff <= 0) {
+        diff = 0;
+        options.autoStart = false;
+      } else {
+        options.countdown = true;
+      }
+
+      var clock = $('#clock').FlipClock(diff, options);
     });
 
 block content
@@ -22,17 +28,35 @@ block content
           strong Save $70 (53% OFF)
         #clock
 
-    .stepper
+    .section-padding(ng-show="errorView")
+      .container.text-center
+        .ng-cloak(ng-show="errorView === 'expired'")
+          h2 You missed out on this deal!
+          p Enter your ZIP code and email so you don't miss out on the next one
+          .row
+            .col-sm-4.col-sm-offset-4
+              form.form(ng-submit="submitEmail()")
+                .form-group
+                  input.form-control.input-lg.text-center(type="tel" pattern="[0-9]{4,5}" ng-model="zip" placeholder="zip code")
+                .form-group
+                  input.form-control.input-lg.text-center(type="email" ng-model="email" placeholder="sample@email.com")
+                button.btn.btn-xl.btn-danger(ng-disabled="submitted") Submit &#10095;&#10095;
+
+        .ng-cloak(ng-show="errorView === 'badZip'")
+          p.lead You're out of delivery range and don't qualify for this deal. Please check your inbox to confirm your email address and we'll send you an even better deal that you qualify for next week!
+          a.btn.btn-xl.btn-danger(href="/") See All Current Deals
+
+    .stepper(ng-show="!errorView")
       .row
         .col-sm-4.text-center.step(ng-class="{active: step >= 1}") 1) Medical Status
         .col-sm-4.text-center.step(ng-class="{active: step >= 2}") 2) Enter ZIP
         .col-sm-4.text-center.step(ng-class="{active: step >= 3}") 3) Claim Deal
 
-    .section-padding
+    .section-padding(ng-show="!errorView")
       .container.text-center
         .ng-cloak.alert.alert-danger(ng-show="error") {{error}}
 
-        div(ng-show="step === 1")
+        .ng-cloak(ng-show="step === 1")
           h2 Do you have a Doctor's Recommendation for Medical Cannabis?
           p Select one
           br

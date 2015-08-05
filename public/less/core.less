@@ -18,18 +18,55 @@ html, .footer-nav{
   }
 }
 
-.bg-green {
+.bg-green{
   background: #38761D;
   color: white;
 }
 
-.stepper {
-  background: #ccc;
+.stepper{
+  background: #eee;
+  height: 50px;
+  overflow: hidden;
+
   .step{
     padding: 15px 0;
+    background: #ccc;
+
     &.active{
       background: #597EAA;
       color: white;
+
+      &:not(:last-child):after{
+        border-left: 10px solid #597EAA;
+      }
+    }
+
+    &:not(:last-child):after{
+      content: " "; 
+      display: block; 
+      width: 0; 
+      height: 0;
+      border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+      border-bottom: 50px solid transparent;
+      border-left: 10px solid #ccc;
+      position: absolute;
+      top: -50%;
+      right: -10px;
+      z-index: 2; 
+    }
+
+    &:not(:last-child):before{
+      content: " "; 
+      display: block; 
+      width: 0; 
+      height: 0;
+      border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+      border-bottom: 50px solid transparent;
+      border-left: 10px solid #eee;
+      position: absolute;
+      top: -50%;
+      right: -13px;
+      z-index: 1; 
     }
   }
 }

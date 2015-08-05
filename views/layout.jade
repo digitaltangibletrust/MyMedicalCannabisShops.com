@@ -1,7 +1,6 @@
 block vars
 
 include mixins
-include thirdPartyMixins
 
 doctype html
 html
@@ -13,7 +12,6 @@ html
     link(rel='stylesheet', href='/less/core.min.css?#{cacheBreaker}')
     script(src='/vendor/jquery/jquery.min.js?#{cacheBreaker}')
     meta(name='description', content='#{meta_description}')
-
 
     block neck
   

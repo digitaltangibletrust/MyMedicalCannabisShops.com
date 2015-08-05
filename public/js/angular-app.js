@@ -24,16 +24,16 @@ function alldaeOfferController($window, $scope, $http) {
   };
 
   $scope.submitEmail = function(){
-    $scope.submitted = true;
     $scope.error = '';
     if (!$scope.email) {
       $scope.error = 'Please enter a valid email address.';
     } else {
+      $scope.submitted = true;
       $http.post('/subscribe', {
         'email': $scope.email,
         'zip': $scope.zip
       }).success(function(res) {
-        $window.location = 'http://alldae.club';
+        $window.location = 'http://www.alldae.club/24-hour-all-dae-payday/';
       }).error(function(err) {
         $scope.submitted = false;
         $scope.error = 'We ran into an error: ' + JSON.stringify(err);

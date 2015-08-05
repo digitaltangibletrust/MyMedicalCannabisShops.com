@@ -16,18 +16,17 @@ block content
   div(ng-controller="alldaeOfferController")
     .section-padding.bg-green.text-center
       .container
-        h2 24-Hour Payday Deal
-        p.lead Get $150 Worth of Cannabis for Only $80!
+        h1(style="font-size:50px;") 24-Hour Payday Deal
+        h2(style="font-size:36px;") Get $150 Worth of Cannabis for Only $80!
           br
           strong Save $70 (53% OFF)
         #clock
 
     .stepper
-      .container
-        .row
-          .col-sm-4.text-center.step(ng-class="{active: step >= 1}") 1) Medical Status
-          .col-sm-4.text-center.step(ng-class="{active: step >= 2}") 2) Enter ZIP
-          .col-sm-4.text-center.step(ng-class="{active: step >= 3}") 3) Claim Deal
+      .row
+        .col-sm-4.text-center.step(ng-class="{active: step >= 1}") 1) Medical Status
+        .col-sm-4.text-center.step(ng-class="{active: step >= 2}") 2) Enter ZIP
+        .col-sm-4.text-center.step(ng-class="{active: step >= 3}") 3) Claim Deal
 
     .section-padding
       .container.text-center
@@ -36,6 +35,7 @@ block content
         div(ng-show="step === 1")
           h2 Do you have a Doctor's Recommendation for Medical Cannabis?
           p Select one
+          br
           a.btn.btn-lg.btn-default(style="width:300px;" href="https://www.hellomd.com/?ref=56B4D935")
             h2.no-margin-top NO
             | I do not have a recommendation
@@ -47,22 +47,24 @@ block content
             | I have a recommendation
 
         .ng-cloak(ng-show="step === 2")
-          h2 Enter your Delivery ZIP Code
+          h2 Enter Your Delivery ZIP Code
+          p To qualify for this deal
           .row
             .col-sm-4.col-sm-offset-4
               form.form(ng-submit="submitZip()")
                 .form-group
                   input.form-control.input-lg.text-center(type="tel" pattern="[0-9]{4,5}" ng-model="zip")
-                button.btn.btn-lg.btn-danger Next
+                button.btn.btn-xl.btn-danger Next &#10095;&#10095;
 
         .ng-cloak(ng-show="step === 3")
-          h2 Enter your Email Address
+          h2 Enter Your Email Address
+          p Last step to qualify and claim this deal
           .row
             .col-sm-4.col-sm-offset-4
               form.form(ng-submit="submitEmail()")
                 .form-group
                   input.form-control.input-lg.text-center(type="email" ng-model="email" placeholder="sample@email.com")
-                button.btn.btn-lg.btn-danger(ng-disabled="submitted") Finish
+                button.btn.btn-xl.btn-danger(ng-disabled="submitted") Finish &#10095;&#10095;
 
     .section-padding
       .container.text-center

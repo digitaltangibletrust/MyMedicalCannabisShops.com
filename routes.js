@@ -8,6 +8,7 @@ var mods = [
   'subscribe',
   'offer',
   'special',
+  'privacy',
   'merchant'
 ];
 
@@ -31,8 +32,10 @@ module.exports.configure = function (app) {
   app.get('/offer/:offer_id', views.offer.view);
   app.get('/offer/:offer_id/claim', views.offer.claim);
 
+  app.get('/privacy', views.privacy.init);
   // custom
   app.get('/alldae-24-hour-payday-deal', views.special.alldae);
+
 
   app.all('*', views.http.http404);
 };

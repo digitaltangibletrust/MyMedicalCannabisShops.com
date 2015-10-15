@@ -48,7 +48,8 @@ function readCache() {
 function fetch() {
   return bluebird.props({
     'offers': getData('offers'),
-    'partners': getData('partners')
+    'partners': getData('partners'),
+    'coming_soon': getData('partners/coming_soon')
   });
 }
 
@@ -59,8 +60,15 @@ function getData(endpoint) {
     })
     .then(JSON.parse)
     .then(function (parsedBody) {
-      return parsedBody.data[endpoint];
+      return getObjectProperty(parsedBody.data, endpoint);
     });
+}
+
+function getObjectProperty(obj, prop) {
+  if (prop.indexOf('/') !== -1) {
+    prop = prop.split('/').pop();
+  }
+  return obj[prop];
 }
 
 function writeCache(data) {

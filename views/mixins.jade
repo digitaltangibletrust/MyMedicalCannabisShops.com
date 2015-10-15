@@ -30,6 +30,9 @@ mixin partnerBox(partner)
         if (partner.logo)
           img.img-responsive.center-block(src="#{partner.logo}" style="max-height:120px;")
         | #{partner.name}
+        
+mixin comingSoon(logo) 
+  img.img-responsive.center-block(src="#{logo}" style="max-height:120px;")
 
 mixin modalTemplate
   #offerModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='offerLabel')

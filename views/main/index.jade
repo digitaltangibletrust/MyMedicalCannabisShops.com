@@ -22,5 +22,10 @@ block content
             each partner in offerData.partners
               .col-lg-6
                 +partnerBox(partner)
+          h3.no-margin-top Coming soon
+          .row
+            each soon in offerData.coming_soon
+              .col-lg-6
+                +comingSoon(soon)
   +modalTemplate
   +howitworks

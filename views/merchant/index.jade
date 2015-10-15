@@ -33,43 +33,35 @@ block content
                   span.text-muted (select all that apply)
                 .checkbox
                   label 
-                    input(type="checkbox")
+                    input(type="checkbox" name="accept_online_payments")
                     | Accept Online Payments
                 .checkbox
                   label 
-                    input(type="checkbox")
-                    | Buy Precious Metals
-                .checkbox
-                  label 
-                    input(type="checkbox")
-                    | Sell Precious Metals
-                .checkbox
-                  label 
-                    input(type="checkbox")
+                    input(type="checkbox" name="btc_transfers")
                     | BTC Transfers
                 .checkbox
                   label 
-                    input(type="checkbox")
+                    input(type="checkbox" name="other_transactions")
                     | Other
                 
           .row.room-above
             .col-sm-4
               .form-group
                 label(for="taxRevenue") Revenue declared on last Federal/State taxes (USD)
-                input.form-control(type="number", step="any" name="taxRevenue" id="taxRevenue" value="" ng-model="businessOps.taxRevenue")
+                input.form-control(type="number", step="any" name="taxRevenue" id="taxRevenue" value="")
             .col-sm-4
               .form-group
                 label(for="monthlyVolume") Estimated monthly online sales volume (USD)
-                input.form-control(type="number", step="any" name="monthlyVolume" id="monthlyVolume" value="" ng-model="businessOps.monthlyVolume")
+                input.form-control(type="number", step="any" name="monthlyVolume" id="monthlyVolume" value="" )
           .row
             .col-sm-4
               .form-group
                 label(for="averageTransaction") Average online transaction amount (USD)
-                input.form-control(type="number", step="any" name="averageTransaction" id="averageTransaction" value="" ng-model="businessOps.averageTransaction")
+                input.form-control(type="number", step="any" name="averageTransaction" id="averageTransaction" value="" )
             .col-sm-4
               .form-group
                 label(for="largestTransaction") Highest online transaction amount (USD)
-                input.form-control(type="number", step="any" name="largestTransaction" id="largestTransaction" value="" ng-model="businessOps.largestTransaction")
+                input.form-control(type="number", step="any" name="largestTransaction" id="largestTransaction" value="" )
 
           .row.room-above
             .col-sm-8
@@ -78,19 +70,19 @@ block content
                   span.text-muted (select all that apply)
                 .checkbox
                   label 
-                    input(type="checkbox" ng-model="businessOps.paymentMethods.cash")
+                    input(type="checkbox" name="accept_cash")
                     | Cash
                 .checkbox
                   label 
-                    input(type="checkbox" ng-model="businessOps.paymentMethods.cards")
+                    input(type="checkbox" name="accept_CC")
                     | Credit/debit cards
                 .checkbox
                   label 
-                    input(type="checkbox" ng-model="businessOps.paymentMethods.check")
+                    input(type="checkbox" name="accept_check")
                     | Check
                 .checkbox
                   label 
-                    input(type="checkbox" ng-model="businessOps.paymentMethods.wire")
+                    input(type="checkbox" name="accept_Wire")
                     | Wire
           .row
             .col-sm-8
@@ -98,10 +90,10 @@ block content
                 label Have you received more than $10,000 USD cash as payment at once from an individual customer?
                 .radio.no-margin
                   label Yes
-                  input(type="radio" name="over10kCash" ng-model="businessOps.over10kCash" value="true")
+                  input(type="radio" name="over10kCash" value="true")
                 .radio
                   label No
-                  input(type="radio" name="over10kCash" ng-model="businessOps.over10kCash" value="false")
+                  input(type="radio" name="over10kCash" value="false")
             .col-sm-4
           .row.room-above
             .col-sm-4

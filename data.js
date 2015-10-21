@@ -60,7 +60,7 @@ function getData(endpoint) {
     })
     .then(JSON.parse)
     .then(function (parsedBody) {
-      return getObjectProperty(parsedBody.data, endpoint);
+      return getObjectProperty(parsedBody.data, endpoint) || [];
     });
 }
 

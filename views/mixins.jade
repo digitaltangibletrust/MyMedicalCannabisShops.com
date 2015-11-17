@@ -49,13 +49,13 @@ mixin showOffer(partner, offer)
   .col-sm-4
     .panel.panel-default.homepage-offer
       .panel-body.text-center
-        h3.text-orange.no-margin-top #{format.currency(offer.value, 0)}  #{offer.type === 'discount' ? 'Discount' : 'Bonus' }
+        h3.text-orange.no-margin-top #{offer.type === 'discount_percent' ? offer.value + '%' : format.currency(offer.value, 0)}  #{offer.type.indexOf('discount') === 0 ? 'Discount' : 'Bonus' }
         hr(style="margin-top:16px")
         h4 #{offer.name}
         h5.partner-info: a(href="/partner/#{partner.slug}" title='#{partner.name}') #{partner.name}
         p.text-muted #{offer.description}
         .hidden.claim-descr #{offer.claimDescription}
-        a.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim-offer(href="/offer/#{offer.id}") Claim #{format.currency(offer.value, 0)} Offer
+        a.btn.btn-warning.btn-block.btn-lg.text-uppercase.claim-offer(href="/offer/#{offer.id}") Claim #{offer.type === 'discount_percent' ? offer.value + '%' : format.currency(offer.value, 0)} Offer
 
 mixin howitworks
   #howitworks.modal.fade.bs-example-modal-lg(tabindex='-1', role='dialog', aria-labelledby='howitworksTitle')
